@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import userSlice from './user/user'
+import storeSlice from './store/store'
 import {
   persistStore,
   persistReducer,
@@ -22,6 +23,7 @@ const persistedReducer = persistReducer(persistConfig, userSlice)
 export const store = configureStore({
   reducer: {
     user: persistedReducer,
+    store: storeSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
