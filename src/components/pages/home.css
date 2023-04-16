@@ -2,6 +2,20 @@
     height: 100%;
     font-family: sans-serif;
     display: flex;
+    flex-direction: column;
+}
+
+.chartDiv {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    padding: 1vh;
+    gap: 0.8vw;
+}
+
+.flex {
+    display: flex;
+    height: 50%;
 }
 
 table {
@@ -11,7 +25,7 @@ table {
 
 
 .homeTableDiv {
-    height: 50%;
+    height: 100%;
     overflow: scroll;
     width: 50%;
     border-bottom: 1px solid #111;
@@ -49,11 +63,6 @@ td {
 
 .prodImage {
     max-width: 30%;
-    /* margin: auto; */
-    /* display: flex;
-    justify-content: center; */
-    /* object-fit: contain; */
-    /* border-radius: 50%; */
 }
 
 
@@ -61,7 +70,7 @@ td {
     width: 50%;
     display: flex;
     flex-direction: column;
-    max-height: 50%;
+    max-height: 100%;
     border: 1px solid #111;
 }
 
@@ -83,7 +92,7 @@ td {
 }
 
 .orderSection>div>div:nth-child(odd) {
-    background: #db9003;
+    background: #ffa500;
 }
 
 .orderSection>div>div:nth-child(even) {
@@ -98,7 +107,6 @@ td {
 .orderSection>div>div>aside>img {
     max-width: 100%;
     object-fit: contain;
-    border-radius: 50%;
 }
 
 .asideDetails {

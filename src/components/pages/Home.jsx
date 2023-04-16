@@ -7,160 +7,41 @@ import { getStore } from '../../redux/store/store'
 import img from '../../assets/vic.jpg'
 import './home.css'
 
+import ChartsComp from './ChartsComp'
+import Table from './Table'
+import Orders from './Orders'
+
 const Home = () => {
   const { currentUser } = useSelector(state => state.user)
-  const { products, status } = useSelector(state => state.store)
-  // const [products, setProducts] = useState([])
+  const { status } = useSelector(state => state.store)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getStore(currentUser.data.token))
   }, [])
+
+  const date = Date.now()
+  const newDate = new Date(date)
+
   return (
     <div className='homeDiv'>
       {
         status === 'Pending' ? 'hey'
           :
           (
-            <div className='homeTableDiv'>
+            <div style={{ height: '100%' }}>
+              <ChartsComp />
+              <div className='flex'>
 
-              <table>
-                <tr className='tr'>
-                  <th>Product name</th>
-                  <th>Product price</th>
-                  <th>Image</th>
-                  <th>Items left</th>
-                </tr>
+                <div className='homeTableDiv'>
+                  <Table />
+                </div>
 
-                {products.map((prod) => (
-                  <tr className='trD' key={prod.id}>
-                    <td>{prod.name}</td>
-                    <td>{prod.price}</td>
-                    <img className='prodImage' src={img} />
-                    <td>7</td>
-                  </tr>
-                ))}
-              </table>
-
+                <Orders />
+              </div>
             </div>)
       }
 
-      <section className='orderSection'>
-        <p className='orderTxt'>
-          Orders
-        </p>
-        <div>
-
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-          <div>
-            <aside className='asideImg'>
-              <img src={img} alt="" />
-            </aside>
-            <aside className='asideDetails'>
-              <div>
-                <p>Kenny Elias</p>
-                <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                <p>+234 802 546 4789</p>
-              </div>
-
-              <div>
-                <p>Samsung Galaxy Fold</p>
-                <p>Red</p>
-                <p>2 pieces</p>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

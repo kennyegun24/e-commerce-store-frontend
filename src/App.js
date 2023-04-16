@@ -5,7 +5,6 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import Nav from './components/nav/Nav';
 import Home from './components/pages/Home';
-import { useState } from 'react';
 import NavHead from './components/nav/NavHead';
 
 
