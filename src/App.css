@@ -22,6 +22,7 @@
 .routes {
   display: flex;
   height: 95%;
+  overflow: hidden;
 }
 
 .navRoutes {
