@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import BarChart from '../chart/BarChart'
 import LineChart from '../chart/LineChart'
 import { useSelector } from 'react-redux'
@@ -35,10 +35,10 @@ const ChartsComp = () => {
 
         acc.sort((a, b) => a.value - b.value)
         return acc
-    }, [formattedDates])
+    }, [])
 
     const [userData, setUserData] = useState({
-        labels: newArray.length > 0 && newArray.map((data) => data.created_at),
+        labels: newArray.map((data) => data.created_at),
         datasets: [{
             label: "Sold goods",
             data: newArray.map((data) => data.quantity),
@@ -48,7 +48,25 @@ const ChartsComp = () => {
         }]
 
     })
-    console.log(userData.labels)
+
+    const prevArrayRef = useRef(newArray)
+
+    useEffect(() => {
+        if (JSON.stringify(newArray) !== JSON.stringify(prevArrayRef.current)) {
+            setUserData({
+                labels: newArray.map((data) => data.created_at),
+                datasets: [{
+                    label: "Sold goods",
+                    data: newArray.map((data) => data.quantity),
+                    backgroundColor: ['orange', 'blue', 'grey'],
+                    borderWidth: 1,
+                    borderColor: '#111',
+                }]
+            })
+            prevArrayRef.current = newArray
+            console.log(prevArrayRef)
+        }
+    }, [newArray])
 
     return (
         <div className='chartDiv'>
