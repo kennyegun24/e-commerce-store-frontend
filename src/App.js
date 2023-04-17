@@ -24,7 +24,7 @@ const App = () => {
           </div>
         }
 
-        <div className='navRoutes'>
+        <div className={currentUser ? `navRoutes` : 'auth'}>
           <Routes>
             <Route path='/register' element={currentUser ? <Navigate to='/' /> : <Register />} />
             <Route path='/' element={currentUser ? <Home /> : <Login />} />

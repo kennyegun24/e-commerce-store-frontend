@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getStore } from '../../redux/store/store'
+import { fetchOrders } from '../../redux/order/order'
 import './home.css'
 import ChartsComp from './ChartsComp'
 import Table from './Table'
@@ -13,6 +14,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(fetchOrders(currentUser.data.token))
     dispatch(getStore(currentUser.data.token))
   }, [])
 

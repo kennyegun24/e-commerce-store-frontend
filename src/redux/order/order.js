@@ -29,7 +29,7 @@ const orderSlice = createSlice({
             .addCase(fetchOrders.fulfilled, (state, action) => {
                 const isFulfilled = state;
                 isFulfilled.status = 'Fulfilled';
-                isFulfilled.total = action.payload.data.map((one) => one.quantity).reduce((a, b) => a + b)
+                isFulfilled.total = action.payload.data.length > 1 ? action.payload.data.map((one) => one.quantity).reduce((a, b) => a + b) : 0
                 isFulfilled.orders = action.payload.data;
             })
     }

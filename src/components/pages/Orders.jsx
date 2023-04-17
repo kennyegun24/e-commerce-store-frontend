@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchOrders } from '../../redux/order/order'
 
 const Orders = () => {
   const { orders } = useSelector((state) => state.order)
-  const { currentUser } = useSelector(state => state.user)
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchOrders(currentUser.data.token))
   }, [])
 
   return (
