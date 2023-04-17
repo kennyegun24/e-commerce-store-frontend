@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import img from '../../assets/vic.jpg'
 const Table = () => {
     const { products } = useSelector(state => state.store)
-    console.log(products)
     return (
         <div>
             <table>
@@ -18,7 +17,7 @@ const Table = () => {
                     <tr className='trD' key={prod.id}>
                         <td>{prod.name}</td>
                         <td>{prod.price}</td>
-                        <img className='prodImage' src={img} />
+                        <img className='prodImage' src={prod.image} />
                         <td>{prod.in_stock}</td>
                     </tr>
                 ))}

@@ -1,124 +1,46 @@
-import React from 'react'
-import img from '../../assets/vic.jpg'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchOrders } from '../../redux/order/order'
 
 const Orders = () => {
-    return (
-        <div className='orderSection'>
-            <p className='orderTxt'>
-                Orders
-            </p>
-            <div>
+  const { orders } = useSelector((state) => state.order)
+  const { currentUser } = useSelector(state => state.user)
+  const dispatch = useDispatch()
 
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
+  useEffect(() => {
+    dispatch(fetchOrders(currentUser.data.token))
+  }, [])
 
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
+  return (
+    <div className='orderSection'>
+      <p className='orderTxt'>
+        Orders
+      </p>
+      <div>
+        {orders.map((indOrd, index) => (
+          <div key={indOrd.id}>
+            {index + 1}
 
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
+            <aside className='asideImg'>
+              <img src={indOrd.image} alt="" />
+            </aside>
+            <aside className='asideDetails'>
+              <div>
+                <p>{indOrd.user_name}</p>
+                <p>{indOrd.address}</p>
+                <p>{indOrd.tel_number}</p>
+              </div>
 
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
-
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
-
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-                <div>
-                    <aside className='asideImg'>
-                        <img src={img} alt="" />
-                    </aside>
-                    <aside className='asideDetails'>
-                        <div>
-                            <p>Kenny Elias</p>
-                            <p>Block N18, Flat 3, Abesan Estate, Ipaja</p>
-                            <p>+234 802 546 4789</p>
-                        </div>
-
-                        <div>
-                            <p>Samsung Galaxy Fold</p>
-                            <p>Red</p>
-                            <p>2 pieces</p>
-                        </div>
-                    </aside>
-                </div>
-            </div></div>
-    )
+              <div>
+                <p>{indOrd.product_name}</p>
+                <p>Red</p>
+                <p>{indOrd.quantity} pieces</p>
+              </div>
+            </aside>
+          </div>
+        ))}
+      </div></div>
+  )
 }
 
 export default Orders
