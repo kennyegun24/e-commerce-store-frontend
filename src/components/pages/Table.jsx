@@ -19,7 +19,7 @@ const Table = () => {
     const columns = [
         { field: 'id', headerName: 'ID', width: 100 },
         { field: 'name', headerName: 'Product Name', width: 300 },
-        { field: 'price', headerName: 'Price', width: 150 },
+        { field: 'price', headerName: 'Price ($)', width: 150 },
         { field: 'in_stock', headerName: 'Quantity Left', width: 150 },
 
         {
