@@ -1,20 +1,8 @@
-import React, { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-// import img from '../../assets/vic.jpg'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
-import { getStore } from '../../redux/store/store';
 const Table = () => {
     const { products } = useSelector(state => state.store)
-    const { currentUser } = useSelector(state => state.user)
-    const dispatch = useDispatch()
-    const ref = useRef(products)
-
-    useEffect(() => {
-        if (products.length <= 0) {
-            dispatch(getStore(currentUser.data.token))
-            ref.current = products
-        }
-    }, [])
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 100 },

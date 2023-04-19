@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginSuccess } from '../../redux/user/user'
 import { FaStore, FaCheck, FaChartBar } from 'react-icons/fa'
+import { fetchOrders } from '../../redux/order/order'
+import { getStore } from '../../redux/store/store'
 
 const Nav = () => {
   const { currentUser } = useSelector((state) => state.user)
@@ -11,6 +13,12 @@ const Nav = () => {
   const logout = () => {
     dispatch(loginSuccess(null))
   }
+
+  useEffect(() => {
+    dispatch(fetchOrders(currentUser.data.token))
+    dispatch(getStore(currentUser.data.token))
+    console.log('orders')
+  }, [])
 
   return (
     <>

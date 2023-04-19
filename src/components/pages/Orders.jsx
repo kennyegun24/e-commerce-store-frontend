@@ -1,20 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { DataGrid } from '@mui/x-data-grid';
-import { fetchOrders } from '../../redux/order/order';
 
 const Orders = () => {
   const { orders } = useSelector((state) => state.order)
-  const { currentUser } = useSelector(state => state.user)
-  const dispatch = useDispatch()
-  const ref = useRef(orders)
-
-  useEffect(() => {
-    if (orders.length <= 0) {
-      dispatch(fetchOrders(currentUser.data.token))
-      ref.current = orders
-    }
-  }, [])
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 50 },
