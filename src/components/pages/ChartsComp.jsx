@@ -26,11 +26,11 @@ const ChartsComp = () => {
         const newDate = date.getMonth()
 
         const exists = acc.find((item) => item.created_at === monthName)
-
         if (exists) {
             exists.quantity += curr.quantity;
+            exists.amount += curr.amount
         } else {
-            acc.push({ created_at: monthName, value: newDate, quantity: curr.quantity });
+            acc.push({ created_at: monthName, value: newDate, quantity: curr.quantity, amount: curr.amount });
         }
 
         acc.sort((a, b) => a.value - b.value)
@@ -42,12 +42,27 @@ const ChartsComp = () => {
         datasets: [{
             label: "Sold goods",
             data: newArray.map((data) => data.quantity),
-            backgroundColor: ['orange', 'blue', 'grey'],
+            backgroundColor: ['rgba(247, 205, 18, 0.795)', 'rgba(50, 93, 236, 0.6)', 'rgba(143, 142, 140, 0.685)'],
             borderWidth: 1,
+            fill: true,
             borderColor: '#111',
+            tension: 0.5,
+        }, {
+            label: "Amount Sold",
+            data: newArray.map((data) => data.amount),
+            backgroundColor: ['rgba(13, 11, 119, 0.767)', 'rgba(248, 23, 23, 0.767)', 'rgba(107, 107, 107, 0.767)', '#fff'],
+            borderWidth: 1,
+            fill: true,
+            borderColor: '#111',
+            tension: 0.5
         }]
 
     })
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+    }
 
     const prevArrayRef = useRef(newArray)
 
@@ -58,20 +73,28 @@ const ChartsComp = () => {
                 datasets: [{
                     label: "Sold goods",
                     data: newArray.map((data) => data.quantity),
-                    backgroundColor: ['orange', 'blue', 'grey'],
+                    borderWidth: 1,
+                    borderColor: '#111',
+                }, {
+                    label: "Amount Sold",
+                    data: newArray.map((data) => data.amount),
                     borderWidth: 1,
                     borderColor: '#111',
                 }]
             })
             prevArrayRef.current = newArray
-            console.log(prevArrayRef)
         }
     }, [newArray])
 
     return (
         <div className='chartDiv'>
-            <BarChart chartData={userData} />
-            <LineChart chartData={userData} />
+            <div>
+                <BarChart chartData={userData} options={options} />
+            </div>
+
+            <div>
+                <LineChart chartData={userData} options={options} />
+            </div>
         </div>
     )
 }
