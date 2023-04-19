@@ -12,16 +12,9 @@
   height: 100vh;
 }
 
-/* .fixPositionNav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-} */
-
 .routes {
   display: flex;
-  height: 95%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -35,5 +28,4 @@
   flex: 1.2;
   border: 1px solid #111;
   width: 20%;
-  /* height: ; */
 }
