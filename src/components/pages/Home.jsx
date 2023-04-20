@@ -21,7 +21,9 @@ const Home = () => {
   return (
     <div className='homeDiv'>
       {
-        status === 'Pending' ? 'hey'
+        status === 'Pending'
+          ?
+          (<div style={{ height: '100vh', width: '100%', display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}><p className="rotate"></p><p style={{ fontSize: '1.5vw', fontWeight: '600' }}>Loading...</p></div>)
           :
           (
             <div style={{ width: '100%', height: '100vh' }}>
