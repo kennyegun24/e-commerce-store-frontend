@@ -2,9 +2,11 @@ import React from 'react'
 import { Bar } from 'react-chartjs-2'
 import { Chart as ChartJs } from 'chart.js/auto'
 /* eslint-disable */
-const BarChart = ({ chartData }) => {
+const BarChart = ({ chartData, options }) => {
     return (
-        <Bar style={{ height: '100%' }} data={chartData} />
+        <div style={{ width: '100%', height: '100%' }}>
+            <Bar data={chartData} options={options} />
+        </div>
     )
 }
 

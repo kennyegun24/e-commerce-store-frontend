@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import Nav from './components/nav/Nav';
 import Home from './components/pages/Home';
 import NavHead from './components/nav/NavHead';
+import Table from './components/pages/Table';
+import Orders from './components/pages/Orders';
 
 
 const App = () => {
@@ -24,10 +26,12 @@ const App = () => {
           </div>
         }
 
-        <div className='navRoutes'>
+        <div className={currentUser ? `navRoutes` : 'auth'}>
           <Routes>
             <Route path='/register' element={currentUser ? <Navigate to='/' /> : <Register />} />
             <Route path='/' element={currentUser ? <Home /> : <Login />} />
+            <Route path='/products' element={currentUser ? <Table /> : <Navigate to='/' />} />
+            <Route path='/orders' element={currentUser ? <Orders /> : <Navigate to='/' />} />
           </Routes>
         </div>
       </div>

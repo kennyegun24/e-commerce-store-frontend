@@ -1,34 +1,38 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginSuccess } from '../../redux/user/user'
+import { FaStore, FaCheck, FaChartBar } from 'react-icons/fa'
+import { fetchOrders } from '../../redux/order/order'
+import { getStore } from '../../redux/store/store'
 
 const Nav = () => {
-  const { userStore } = useSelector(state => state.user)
-  const { total } = useSelector(state => state.order)
+  const { currentUser } = useSelector((state) => state.user)
 
   const dispatch = useDispatch()
   const logout = () => {
     dispatch(loginSuccess(null))
   }
 
+  useEffect(() => {
+    dispatch(fetchOrders(currentUser.data.token))
+    dispatch(getStore(currentUser.data.token))
+    console.log('orders')
+  }, [])
+
   return (
     <>
       <nav className='mainNavHeader'>
-        <div className='mainNavDiv'>
-          <img className='navStoreImage' src={userStore.store.image} alt="" />
-          <div>
-            <p>{userStore.store && userStore.store.store_name}</p>
-            <p>No. Prod: {userStore.store && userStore.store.total_products}</p>
-            <p>No. Sales: {total && total}</p>
-            <button style={{ background: 'blue', color: '#fff', padding: '0.5rem', border: 'none', fontSize: '1vw' }} onClick={() => logout()}>Logout</button>
-          </div>
-        </div>
-
         <div className='navOptions'>
           <ul>
-            <li>Products</li>
-            <li>Orders</li>
-            <li>Statistics</li>
+            <div>
+              <img className='navImage' src={currentUser.store.image} alt="" />
+            </div>
+
+            <NavLink to='/' className='navLink'><FaChartBar /> Statistics</NavLink>
+            <NavLink className='navLink' to='/products'><FaStore /> Products</NavLink>
+            <NavLink className='navLink' to='/orders'><FaCheck /> Orders</NavLink>
+            <button className='logoutButton' onClick={() => logout()}>Logout</button>
           </ul>
         </div>
       </nav>
