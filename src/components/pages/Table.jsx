@@ -22,13 +22,16 @@ const Table = () => {
 
     return (
         <div style={{ height: '100%', width: '100%' }}>
-            <DataGrid
-                rows={products}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={5}
-                checkboxSelection
-            />
+            <h2 style={{ width: '100%', padding: '0.5rem', fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center' }}>All Orders</h2>
+            <div style={{ height: 'calc(100% - 2.5rem)' }}>
+                <DataGrid
+                    rows={products}
+                    columns={columns}
+                    pageSize={5}
+                    rowsPerPageOptions={5}
+                    checkboxSelection
+                />
+            </div>
         </div>
     )
 }
