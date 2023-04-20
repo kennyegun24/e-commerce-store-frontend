@@ -3,11 +3,22 @@
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
+    /* overflow: auto; */
+    padding: 1rem;
+}
+
+.homeMainDiv {
+    width: 100%;
+    height: 100vh;
     overflow: auto;
 }
 
-.homeDiv::-webkit-scrollbar {
+.homeMainDiv::-webkit-scrollbar {
     display: none;
+}
+
+.chartCompDiv {
+    height: 50%;
 }
 
 .chartDiv {
@@ -53,5 +64,11 @@
 
     100% {
         rotate: 360deg;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 400px) {
+    .chartCompDiv {
+        height: 30%;
     }
 }
