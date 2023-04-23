@@ -24,7 +24,7 @@
   justify-content: center;
 }
 
-.navOptions>ul {
+.navUls {
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -39,6 +39,9 @@
   padding: 1vw;
   width: 100%;
   font-size: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
 }
 
 .logoutButton {
@@ -67,4 +70,71 @@
   color: #fff;
   transition: 0.5s ease-in-out;
   background: rgba(3, 24, 92, 0.6);
+}
+
+.bar {
+  display: none;
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+  .navUls {
+    gap: 1.2vh;
+  }
+
+  .show {
+    display: flex;
+  }
+
+  .mainNavHeader {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    height: 92vh;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .hide {
+    right: -1000%;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .navOptions {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+    width: 45vw;
+    background: #fff;
+    z-index: 999;
+  }
+
+  .navLink {
+    color: #6868e9;
+    padding: 0.5rem;
+    font-size: 20px;
+  }
+
+  .active {
+    color: #fff;
+  }
+
+
+  .logoutButton {
+    font-size: 20px;
+  }
+
+  .bar {
+    display: block;
+    font-size: 25px;
+    width: fit-content;
+    position: absolute;
+    top: 1vh;
+  }
+}
+
+@media (min-width: 651px) and (max-width: 900px) {
+  .navLink {
+    font-size: 1.15vh;
+  }
 }

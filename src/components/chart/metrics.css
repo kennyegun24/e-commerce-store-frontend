@@ -1,17 +1,22 @@
 .storeMetMainDiv {
     gap: 1.5rem;
     width: 100%;
-    height: 30%;
+    height: 30vh;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.percentDiv {
+    height: 70px;
+    width: 70px;
+}
+
 .storeMetCards {
     flex-basis: 25%;
     flex: 1;
-    height: 80%;
+    height: 100%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 0.8rem;
     gap: 1rem;
@@ -48,8 +53,69 @@
     justify-content: center;
 }
 
-@media (max-width: 900px) and (min-width: 400px) {
+@media (max-width: 900px) and (min-width: 651px) {
     .storeMetMainDiv {
         height: 20%;
+    }
+
+    .storeMetCards h2 {
+        font-size: 1.8vw;
+    }
+
+    .storeMetCards p {
+        font-size: 1.5vw;
+    }
+
+    .storeMetCardTitle {
+        gap: 1vw;
+    }
+
+    .storeMetCards {
+        gap: 0.5rem;
+        text-align: center;
+        padding: 0.5rem;
+        width: fit-content;
+    }
+
+    .storeMetCardIcon {
+        font-size: 1.5vw;
+    }
+}
+
+@media (max-width: 650px) and (min-width: 200px) {
+    .storeMetMainDiv {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .storeMetCards {
+        gap: 0.5rem;
+        align-items: center;
+        text-align: center;
+        padding: 0.5rem;
+        flex-basis: 45%;
+        width: fit-content;
+        flex-grow: 0;
+    }
+
+    .storeMetCardIcon {
+        font-size: 1.5vw;
+    }
+
+    .storeMetCardTitle {
+        gap: 1vw;
+    }
+
+    .storeMetCards h2 {
+        font-size: 2.5vw;
+    }
+
+    .storeMetCards p {
+        font-size: 2.5vw;
+    }
+
+    .percentDiv {
+        height: 40px;
+        width: 40px;
     }
 }
