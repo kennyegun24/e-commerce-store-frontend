@@ -10,17 +10,20 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  font-family: sans-serif;
+  overflow: hidden;
 }
 
 .routes {
   display: flex;
   height: 100%;
-  overflow: hidden;
+  position: relative;
 }
 
 .navRoutes {
   flex: 6;
   width: 80%;
+  height: 100%;
   border: 1px solid #111;
 }
 
@@ -28,4 +31,27 @@
   flex: 1.2;
   border: 1px solid #111;
   width: 20%;
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+  .routes {
+    display: block;
+    width: 100%;
+  }
+
+  .navRoutes {
+    width: 100%;
+  }
+
+  .navRoute {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+  }
+
+  .navRoute,
+  .navRoutes {
+    border: none;
+  }
 }

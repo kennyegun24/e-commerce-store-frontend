@@ -4,9 +4,14 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    padding: 1rem;
 }
 
-.homeDiv::-webkit-scrollbar {
+.homeMainDiv {
+    width: 100%;
+}
+
+.homeMainDiv::-webkit-scrollbar {
     display: none;
 }
 
@@ -15,14 +20,13 @@
     display: flex;
     padding: 1vh;
     color: rgba(107, 107, 107, 0.767);
-    height: 100%;
 }
 
 .chartDiv>div {
     flex-basis: 50%;
     flex-grow: 1;
     width: 50%;
-    height: 100%;
+    height: 40vh;
 }
 
 .flex {
@@ -34,4 +38,52 @@
     text-align: center;
     padding: 0.5vw;
     font-weight: 600;
+}
+
+.rotate {
+    height: 100px;
+    width: 100px;
+    border: 4px solid rgba(12, 117, 158, 0.89);
+    border-right: 4px solid #fff;
+    border-radius: 50%;
+    animation: 1s rotate linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@media (max-width: 650px) and (min-width: 200px) {
+
+    .chartDiv {
+        width: 100%;
+        display: block;
+    }
+
+    .chartDiv>div {
+        flex-basis: 100%;
+        flex-grow: 1;
+        width: 100%;
+        height: 30vh;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 650px) {
+    .chartDiv {
+        width: 100%;
+        display: block;
+    }
+
+    .chartDiv>div {
+        flex-basis: 100%;
+        flex-grow: 1;
+        width: 100%;
+        height: 30vh;
+    }
 }

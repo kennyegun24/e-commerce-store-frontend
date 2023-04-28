@@ -26,7 +26,7 @@ const StoreMetDetails = () => {
     return (
         <div className='storeMetMainDiv'>
             <aside className='storeMetCards'>
-                <div style={{ height: 70, width: 70 }}>
+                <div className='percentDiv' >
                     <CircularProgressbar className='percentage' value={checkValuePercentage} text={`${Math.round(checkValuePercentage)}%`} />
                 </div>
                 <p>Sold {Math.round(checkValuePercentage)}% of all your products</p>

@@ -6,7 +6,7 @@ const MetricDetails = () => {
     const { userStore } = useSelector(state => state.user)
     const { total } = useSelector(state => state.order)
     return (
-        <div style={{ margin: 'auto', gap: '1.5rem', width: '100%', height: '25%', padding: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className='storeMetMainDiv'>
             <aside className='storeMetCards'>
                 <div className='storeMetCardTitle'>
                     <FaHashtag className='storeMetCardIcon' />
