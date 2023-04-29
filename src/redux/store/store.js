@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import { userRequest } from "../../allRequests"
 
 export const getStore = createAsyncThunk('stores/getOwnerStores', async (TOKEN) => {
-    const BASE_URL = 'http://localhost:3000/api/v1'
+    const BASE_URL = 'http://localhost:4000/api/v1'
     // const TOKEN = currentUser.data.token
     const userRequest = axios.create({
         baseURL: BASE_URL,

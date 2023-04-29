@@ -11,15 +11,6 @@ const Orders = () => {
     { field: 'product_name', headerName: 'Product name', width: 200 },
     { field: 'address', headerName: 'Address', width: 300 },
     { field: 'tel_number', headerName: 'Tel', width: 150 },
-    { field: 'quantity', headerName: 'Quantity', width: 70 },
-    {
-      field: 'image', headerName: 'Image',
-      renderCell: (params) => (
-        <img src={params.value} alt='' style={{ width: 50, borderRadius: 50 }} />
-      ),
-      sortable: false,
-      width: 120
-    }
   ];
 
   return (
